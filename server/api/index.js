@@ -8,8 +8,8 @@ var mongoose = require("mongoose");
 
 
 var db = require(".././models");
-// const uri =  process.env.MONGODB_URI;
-const uri = 'mongodb://localhost/noahjrush'
+const uri =  process.env.MONGODB_URI;
+// const uri = 'mongodb://localhost/noahjrush'
 mongoose.connect(uri);
 
 
