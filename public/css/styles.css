@@ -290,6 +290,12 @@ font-size: 18px;
 	font-family: "Ubuntu Mono", monospace;
 
 }
+.project-item .info a{
+font-size: 18px;
+    color:white;
+    font-family: "Ubuntu Mono", monospace;
+
+}
 .project-box .static{
 	width:calc(100% - 10px);
 	height:calc(100% - 10px);
@@ -359,7 +365,15 @@ max-height: 0px;
   /*animation: */
     /*typing 3.5s steps(40, end)*/
 }
-
+.project-item img {
+    max-width:100%;
+    height: auto;
+}
+.project-item.selected h3{
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    margin-bottom: 0px;
+}
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }

@@ -82,11 +82,10 @@ var ProjectBox = React.forwardRef((props, ref) => {
 						<div class = "date">{item.date}</div>
 						</a>
 						</h3>
+
 						  <div tabindex = "-1" className = "info" ref={ref} onFocus={() => console.log('focus')} onClick={() => console.log('clicked')}> 
 						 	<div className = "description" dangerouslySetInnerHTML = {{__html: item.info}} />
 							
-						 	<Videos videos = {item.videos}/>
-		
 
 						 </div>
 						 </div>

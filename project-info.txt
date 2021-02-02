@@ -1,3 +1,51 @@
 Philly Zing
 
 Philly Zing was the first web development project I worked on. The idea for the app was a theater review site for shows during the 2014 Philadelphia Fringe Festival. Unfortunately the site has not been maintained, but it was designed and built by me using Flask, and it gave me the ability to experiment with all kinds of new features. At its core the app scraped theater calendars to aggregate show data, including dates, information and venue. Users could then log in and review shows, either writing reviews or rating it with stars like on yelp. Users had to authenticate using a email and password, or with facebook. Users could also give shows adjective descriptors, like "funny" or "sad" or "abysmal", and then other users could sort the shows based on those descriptors. I also scraped local review sites to add professional reviews to the show descriptions. Basically, think Rotten Tomatoes except localized to Philadelphia and for theatre. This project gave me an opportunity to experiment and learn many new technologies, among them flask, API calls in jquery, html, css, Postgres and Heroku. 
+
+The Six Degrees of Kevin Durant
+
+This was a project I did in my spare time at work looking to improve my skills with data manipulation and visualization. I'm a big NBA fan, and I wanted to do some kind of cool visualization, and I started with more traditional stats like plus-minus, and other tools like that. But it was also started at a time when my favorite basketball team was making a lot of trades, and I became curious about player turnover in leagues, and how many guys each player had played with, and who those players had played with. Kind of like the "six degree's of kevin bacon", a game where players try to connect any Hollywood Actor to Kevin Bacon, by naming movies actors had been in together until you get to Kevin Bacon. "Six Degrees" comes from the concept that any two people on Earth are six or fewer acquaintances apart. Given that fact, I might have realized that NBA players are much more linked, and they are. In fact, since I based the visualization on 2-player lineup stats, which only go back to the mid-1990s on basketball-reference.com, most players are only two steps away from eachother. Nonetheless, I think it makes for an interesting visualization and is fun to play around with for the NBA fan. I used react, D3, mongoDB, and an express server to build the app. Data is from basketball-reference.com. App is available <a href = "https://fierce-citadel-35739.herokuapp.com/">here</a>.
+
+Jeopardy Simulator
+
+<p>At some point, I got really into Jeopardy, and so were my friends, so I wanted to play Jeopardy; partially to learn a lot of jeopardy and get good, and partially just for fun. 
+First, I realized that J-archive existed, where fans had compiled a history of all the questions, and once I realized that, I figured it wouldnt be too hard to build an app. My dream program would have contestants using their phones for a buzzer and perfect voice recognition. I haven't gotten there yet! First I built an terminal version where a single player can play Jeopardy. Now, I am in the beta version of a react app where multiple players can join and play eachother in a Jeopardy match. The app is built in react, and uses Socket.IO to push update messages from the server to the clients. That way, multiple rooms/games can exist, and within those rooms, when one player selects a question, all the players are notified. And same with buzzing in, score updates and all the features of normal jeopardy. Right now, the game works!. There are a few bugs, and it is not completely styled, but the nut's and bolt's are there and I am continuing to improve it when I have time. Technologies used: Express, react, mongoDB, socket.io. App available <a href = "https://secret-ocean-04091.herokuapp.com/" target = "_blank">here</a>.</p>
+
+Multiplicity
+
+<p>For my senior thesis in music at Wesleyan, I composed a series of audio-visual pieces that were performed in the university chapel in april 2014. The musical pieces were all composed in SuperCollider, while the visual pieces were written in Processing. The programs communicated via OSC (Open Sound Control) messages, and were performed as live improvisations, so the videos below are not exactly the same as the performance. The pieces were inspired by the Absolute film movements of the 1920s, particularly the work of Oscar Fischinger. The videos are below.</p>
+<p>Video 1 - Exploration of 3 parameters, performer controls 100 synths which produce a pulsating tone, performer can control speed, pitch and volume of each pulse. Inspired by Ligeti's Poème symphonique for 100 metronomes.</p>
+<iframe  src="http://player.vimeo.com/video/98237055" width="640" height="400" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<p>Video 2 - An Exploration of solitary spaces</p>
+
+<iframe src="http://player.vimeo.com/video/98237056" width="640" height="400" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+<p>Video 3 - Evolutionary pictures and sounds, mostly inspired by Fischinger, this is an improvisation. </p>
+<iframe src="http://player.vimeo.com/video/98240989" width="640" height="400" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<p>Video 4 - Continuation and outgrowth of the methods in video 3 </p>
+
+<iframe src="http://player.vimeo.com/video/98243847" width="640" height="400" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+BigSmall
+
+<p>BigSmall is a VR game demo built in Unity built for the Virtual Reality/Augmented Reality class at Cornell tech. BigSmall is an escape room where players have to work together to solve puzzles to escape the room. Players also have the ability to shrink and grow on demand. Since the project was only completed over three months, the focus was on interesting Virtual Reality interactions as opposed to the traditional user experience elements you would expect from a fully polished game. We used normcore to help provide multiplayer support, and were able to complete a demo with 3 rooms of challenges. See the demo below. </p>
+<iframe src="http://player.vimeo.com/video/507685989" width="640" height="400" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<p>Screenshots</p>
+<img src = "/public/imgs/2.jpg"></img>
+<img src = "/public/imgs/3.jpg"></img>
+<img src = "/public/imgs/4.jpg"></img>
+<img src = "/public/imgs/5.jpg"></img>
+<img src = "/public/imgs/6.jpg"></img>
+
+
+Processing Sketches
+
+<p>Over the years I've made a variety of sketches with Processing, an open-source programming language built to work with visual arts. The sketches range from small little interactions, like "Bending Lines", available <a href = "https://secret-gorge-9951.herokuapp.com/" target ="_blank">here</a> to more involved experiences like kaleidoscope, gif below. </p>
+
+GANs
+
+
+Robotic Path Planning Algs
+
+<p>For Algorithms & Data Structures at Cornell Tech, my final project was to implement and analyze several path-planning algorithms commonly used in robotics. Path planning algorithms start with a target position, a destination position, and a group of obstacles and their positions. Sometimes the robot or agent has full knowledge of the obstacles, and sometimes the robot only knows the obstacles it can see right in front of it. In addition, we also implemented and analyzed dynamic contexts, where the obstacles can be other robots, with target destinations. In those situations, similar knowledge paradigms exist. There can either be a centralized planner that knows the intentions of all the robots and plans everyones path accordingly, or in a decentralized system, each robot knows nothing of the other robots intentions, but knows their positions. For dynamic situations, I implemented a brute force greedy algorithm, Djikstra combined with the calculating the corner of every obstacle, A* on a grid, Rapidly Exploring Random Trees, and algorithm comparable to using potential measurements in electricity. For dynamic situations, we used a simple reward based system for our decentralized algorithm, analogous to A*, and Conflict Based-Search resolution through trees for the centralized algorithm. Click <a href = "/public/pdfs/alg2020.pdf" target = "_blank">here</a> for the full report and see below for some results of our experiements.</p> 
