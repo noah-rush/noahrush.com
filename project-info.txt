@@ -45,6 +45,11 @@ Processing Sketches
 
 GANs
 
+<p>Creating art has always been a very human task due to the complexity and subjectivity of process. With the advent of deep learning, specifically Generative Adversarial Networks, AI has begun to create original art.There exist approaches for transferring the style of one picture to the content of another, but in this projectwe attempt to capture the style over a group of images as defined by their genre. In this paper, we explore two GAN architectures, CycleGAN, and StarGAN. Our objective is to create a model capable of handling translation across multiple genre domains, i.e.  converting an Impressionist painting to an Expressionist painting, or generating an image in different genres from one photograph. Because of the domain limitations of CycleGAN, we focused more on implementing StarGAN, a relatively novel and scalable approach that canperform image-to-image translation for multiple domains using only a single model. Using StarGan, we were able to generate new images across several genres of painting and real images, and evaluate the success of our model over various domains using the Frechet-Inception Distance.</p>
+
+<p>Click <a href = "/public/pdfs/ML2020.pdf" target = "_blank">here</a> for the full paper.</p>
+
+<p>Photos</p>
 
 Robotic Path Planning Algs
 
