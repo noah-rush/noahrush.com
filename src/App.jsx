@@ -12,7 +12,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            menuOptions: ["Development", "Creative", "VR", "Academic", "CV"],
+            menuOptions: ["Development", "Creative", "VR", "Academic", "Resume"],
             activeMenu: 0,
             moveToLeft: false,
             section: "",
@@ -21,7 +21,7 @@ class App extends Component {
             pointerControl: "menu",
             waitingOnProjectList: false,
             projectSelected: false,
-            project: 0            
+            project: 0
 
         };
         this.textToRead = React.createRef();
@@ -37,28 +37,35 @@ class App extends Component {
         this.setState({ hoverProj: index })
     }
     loadProject = (index) => {
-    	this.setState({pointerControl:"project", 
-    					project: index,
-    					projectSelected:true
-    					}, () =>{
-    	this.textToRead.current.focus()
-    
-    })
+        if (this.state.projectList[index].name == "Full Resume PDF") {
+            this.resume.click()
+        } else {
+            this.setState({
+                pointerControl: "project",
+                project: index,
+                projectSelected: true
+            }, () => {
+                this.textToRead.current.focus()
+            })
+        }
+
 
     }
+
+
     // simulateClick = (e) =>{
-    	// e.focus()
+    // e.focus()
     // }
     listProjects = (index) => {
-        this.setState({ moveToLeft: true, projectSelected:false })
+        this.setState({ moveToLeft: true, projectSelected: false })
         this.setState({ section: index })
         this.setState({ pointerControl: "projects" })
-        this.setState({hoverProj:0})
-        this.setState({waitingOnProjectList:true})
+        this.setState({ hoverProj: 0 })
+        this.setState({ waitingOnProjectList: true })
         axios.get("/api/projects/" + this.state.menuOptions[index]).then(
             data => {
                 // console.log(data)/
-        		this.setState({waitingOnProjectList:false})
+                this.setState({ waitingOnProjectList: false })
                 this.setState({ projectList: data.data.message })
             })
     }
@@ -72,7 +79,7 @@ class App extends Component {
             }
         }
         if (event.keyCode == 37) {
-            if (this.state.pointerControl == "projects" || this.state.pointerControl =="project") {
+            if (this.state.pointerControl == "projects" || this.state.pointerControl == "project") {
                 this.setState({ pointerControl: "menu" })
                 this.site.current.focus()
             }
@@ -81,7 +88,7 @@ class App extends Component {
         if (event.keyCode == 39) {
             if (this.state.pointerControl == "menu" && !this.state.projectSelected) {
                 this.setState({ pointerControl: "projects" })
-            }else if(this.state.pointerControl == "menu" && this.state.projectSelected){
+            } else if (this.state.pointerControl == "menu" && this.state.projectSelected) {
                 this.setState({ pointerControl: "project" })
                 this.textToRead.current.focus()
             }
@@ -104,15 +111,15 @@ class App extends Component {
             }
         }
         if (event.keyCode == 13) {
-             if (this.state.pointerControl == "projects") {
+            if (this.state.pointerControl == "projects") {
                 this.loadProject(this.state.hoverProj % this.state.projectList.length)
-            	
+
             }
             if (this.state.pointerControl == "menu") {
                 this.listProjects(this.state.activeMenu % this.state.menuOptions.length)
-            	
+
             }
-            
+
         }
     }
     componentDidMount() {
@@ -125,33 +132,34 @@ class App extends Component {
     render() {
         return (
             <div tabindex = "-1" onFocus={() => console.log('focus')} onClick={() => console.log('clicked')} className = "site" ref = {this.site}>
-		<Header/>
-		<Menu 
-			moveToLeft = {this.state.moveToLeft} 
-			listProjects = {this.listProjects}
-			changeHoverMenu = {this.changeHoverMenu} 
-			active = {this.state.activeMenu} 
-			menuOptions = {this.state.menuOptions}
-			selected = {this.state.section}
-			pointerControl = {this.state.pointerControl}
+        <Header/>
+        <Menu 
+            moveToLeft = {this.state.moveToLeft} 
+            listProjects = {this.listProjects}
+            changeHoverMenu = {this.changeHoverMenu} 
+            active = {this.state.activeMenu} 
+            menuOptions = {this.state.menuOptions}
+            selected = {this.state.section}
+            pointerControl = {this.state.pointerControl}
 
-		/>
-		{this.state.moveToLeft ?
-		<ProjectBox
-		hover = {this.state.hoverProj}
-		list = {this.state.projectList}
-		hoverfunc = {this.changeHoverProject}
-		category = {this.state.menuOptions[this.state.section]}
-		pointerControl = {this.state.pointerControl}
-		loading = {this.state.waitingOnProjectList}
-		projectSelected = {this.state.projectSelected}
-		project = {this.state.project}
-		pickProject = {this.loadProject}
-		ref = {this.textToRead}
-		simulateClick = {this.simulateClick}
-		/>
-		:""}
-		</div>
+        />
+        {this.state.moveToLeft ?
+        <ProjectBox
+        hover = {this.state.hoverProj}
+        list = {this.state.projectList}
+        hoverfunc = {this.changeHoverProject}
+        category = {this.state.menuOptions[this.state.section]}
+        pointerControl = {this.state.pointerControl}
+        loading = {this.state.waitingOnProjectList}
+        projectSelected = {this.state.projectSelected}
+        project = {this.state.project}
+        pickProject = {this.loadProject}
+        ref = {this.textToRead}
+        simulateClick = {this.simulateClick}
+        />
+        :""}
+        <a id =  "resume" ref={input => this.resume = input} href = "/public/pdfs/resume.pdf" style = {{"display":"none"}} target = "_blank"></a>
+        </div>
         )
     }
 }

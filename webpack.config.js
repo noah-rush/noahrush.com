@@ -1,11 +1,11 @@
 module.exports = {
 	entry: __dirname+'/src/App.jsx',
-	mode: 'production',
+	mode: 'development',
 	output: {
 		path: __dirname+'/public/js',
 		filename: 'bundle.js'
 	},
-	watch: false,
+	watch: true,
 	module: {
 		rules: [
 			{

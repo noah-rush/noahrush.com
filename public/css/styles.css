@@ -266,7 +266,12 @@ height:800px;
     display: block;
     /*margin-bottom: 25px;*/
 }
-
+.project-item h3{
+    cursor: pointer;
+}
+.project-item.selected h3{
+    cursor:default;
+}
 .project-item h3 a {
     transition: all 0.3s;
 }
