@@ -161,6 +161,7 @@ class App extends Component {
         <a id =  "resume" ref={input => this.resume = input} href = "/public/pdfs/resume.pdf" style = {{"display":"none"}} target = "_blank"></a>
         </div>
         )
+
     }
 }
 

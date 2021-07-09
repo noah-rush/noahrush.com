@@ -21,7 +21,7 @@ body {
     margin: 0 auto;
     height: 100vh;
     box-sizing: border-box;
-    padding: 25px;
+    padding: 40px;
     position: relative;
     /*padding-top:25px;*/
     /*padding-left:25px;*/
@@ -70,7 +70,7 @@ h2 {
 }
 
 .menu.move-left {
-    left: 25px;
+    left: 40px;
 }
 
 .menu.move-left a.active {
@@ -293,7 +293,7 @@ height:800px;
 font-size: 18px;
 	color:white;
 	font-family: "Ubuntu Mono", monospace;
-
+    margin-top: 0px;
 }
 .project-item .info a{
 font-size: 18px;
@@ -338,6 +338,7 @@ max-height: 0px;
 	animation: revealText 0.5s;
 	animation-delay: 0.3s;
 	animation-fill-mode: forwards;
+    margin-top: 15px;
 }
 
 .project-box-inner.project-selected .project-item{
@@ -391,6 +392,14 @@ max-height: 0px;
 		max-height: 585px;
 	}
 }
+@media only screen and (max-height: 830px) {
+@keyframes revealText{
+    from{max-height: 0px}
+    to{
+        max-height: calc(90vh - 200px);
+    }
+}
+}
 @keyframes staticIn{
 	99% {
     visibility: hidden;
@@ -424,4 +433,12 @@ max-height: 0px;
 .slick-dots li.slick-active button:before {
     opacity: .75;
     color: white;
+}
+.project-box{
+    max-width: calc(100vw - 45%);
+    max-height: 90%;
+}
+
+iframe, img{
+    margin-bottom: 20px;
 }
