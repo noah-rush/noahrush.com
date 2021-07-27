@@ -4,13 +4,40 @@ import Images from './Images.jsx';
 import Typewriter from './Typewriter.jsx';
 
 
+function getPboxWidth() {
+    let pboxWidth = window.innerWidth > 1460 ? 680 : 0.55 * window.innerWidth - 120
+    if (window.innerWidth < 1000) {
+        pboxWidth = window.innerWidth - 160 
+    }
+    if(window.innerWidth < 767){
+        pboxWidth = window.innerWidth - 90 
+
+    }
+    return pboxWidth
+}
+
+function getFontSize() {
+    let fontSize = 21
+    if (window.innerWidth < 1000) {
+        fontSize = 21
+    }
+     if(window.innerWidth < 767){
+        fontSize = 15
+
+    }
+    return fontSize
+}
+
+
 var ProjectBox = React.forwardRef((props, ref) => {
+
 
 
     const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
         width: window.innerWidth,
-        pboxWidth: window.innerWidth >1460 ? 680 : 0.55 * window.innerWidth - 120    
+        pboxWidth: getPboxWidth(),
+        fontSize: getFontSize()
     })
 
     React.useEffect(() => {
@@ -18,7 +45,11 @@ var ProjectBox = React.forwardRef((props, ref) => {
             setDimensions({
                 height: window.innerHeight,
                 width: window.innerWidth,
-                pboxWidth: window.innerWidth >1460 ? 680 : 0.55 * window.innerWidth - 120             })
+                pboxWidth: getPboxWidth(),
+                fontSize: getFontSize()
+
+
+            })
 
         }
 
@@ -38,7 +69,7 @@ var ProjectBox = React.forwardRef((props, ref) => {
     let names = props.list.map((item) => item.name)
     let headClass = props.projectSelected ? "project-box project-box-open" : "project-box"
     let lines = names.map((name) => {
-        if (name.length * 21 < dimensions.pboxWidth) {
+        if (name.length * dimensions.fontSize < dimensions.pboxWidth) {
             return [name]
         } else {
             var parts = []
@@ -48,10 +79,10 @@ var ProjectBox = React.forwardRef((props, ref) => {
                 section += name[i]
                 count += 1
                 if (name[i] == " ") {
-                	let nextChunk = name.substring(i)
-                	let nextSpace = nextChunk.indexOf(" ")
-                	let nextWordLength = nextSpace
-                    if ((count + nextWordLength) * 21 > dimensions.pboxWidth){
+                    let nextChunk = name.substring(i)
+                    let nextSpace = nextChunk.indexOf(" ")
+                    let nextWordLength = nextSpace
+                    if ((count + nextWordLength) * dimensions.fontSize > dimensions.pboxWidth) {
                         parts.push(section)
                         count = 0
                         section = ""
