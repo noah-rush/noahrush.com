@@ -5,6 +5,32 @@ import Typewriter from './Typewriter.jsx';
 
 
 var ProjectBox = React.forwardRef((props, ref) => {
+
+
+    const [dimensions, setDimensions] = React.useState({
+        height: window.innerHeight,
+        width: window.innerWidth,
+        pboxWidth: window.innerWidth >1460 ? 680 : 0.55 * window.innerWidth - 120    
+    })
+
+    React.useEffect(() => {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth,
+                pboxWidth: window.innerWidth >1460 ? 680 : 0.55 * window.innerWidth - 120             })
+
+        }
+
+        window.addEventListener('resize', handleResize)
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+
+        }
+    })
+
+
+
     let menuClass = props.moveToLeft ? "menu move-left" : "menu"
     let pointerClass = props.pointerControl == "projects" ? "pointer" : "pointer-pointer-off"
     let staticClass = props.loading ? 'static active' : 'static'
@@ -12,7 +38,7 @@ var ProjectBox = React.forwardRef((props, ref) => {
     let names = props.list.map((item) => item.name)
     let headClass = props.projectSelected ? "project-box project-box-open" : "project-box"
     let lines = names.map((name) => {
-        if (name.length < 38) {
+        if (name.length * 21 < dimensions.pboxWidth) {
             return [name]
         } else {
             var parts = []
@@ -22,7 +48,10 @@ var ProjectBox = React.forwardRef((props, ref) => {
                 section += name[i]
                 count += 1
                 if (name[i] == " ") {
-                    if (count > 35) {
+                	let nextChunk = name.substring(i)
+                	let nextSpace = nextChunk.indexOf(" ")
+                	let nextWordLength = nextSpace
+                    if ((count + nextWordLength) * 21 > dimensions.pboxWidth){
                         parts.push(section)
                         count = 0
                         section = ""
@@ -30,21 +59,19 @@ var ProjectBox = React.forwardRef((props, ref) => {
                 }
 
             }
-            if(section.length>0){
-            	parts.push(section)
+            if (section.length > 0) {
+                parts.push(section)
             }
             return parts
         }
         // return parts
     })
-    let pointerPlacements = lines.map((line, index) =>
-    {
-    	let place = 0
-    	for (var i =0; i<index; i++)
-    	{
-    		place += lines[i].length *30 +25
-    	}
-    	return place
+    let pointerPlacements = lines.map((line, index) => {
+        let place = 0
+        for (var i = 0; i < index; i++) {
+            place += lines[i].length * 30 + 25
+        }
+        return place
     })
 
 
